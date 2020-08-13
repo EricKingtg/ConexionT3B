@@ -1,31 +1,87 @@
 package com.org.bbb.utils;
 
-import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Component;
 
-@Component("configuracion")
-@ConfigurationProperties(ignoreInvalidFields = false, prefix = "prop.bd.t3b")
+@Component("configIp")
+@PropertySource(value = "file:ConexionBBB.properties")
 public class Config {
 
+	@Value("${host}")
 	private String host;
+	
+	@Value("${port}")
 	private String port;
+	
+	@Value("${pass}")
 	private String pass;
+	
+	@Value("${user}")
 	private String user;
+	
+	@Value("${name}")
 	private String name;
+	
+	@Value("${jdni}")
 	private String jdni;
+	
+	@Value("${surl}")
 	private String surl;
+	
+	@Value("${driv}")
 	private String driv;
 
+	@Value("${port-s-b}")
 	private String portSB;
+	
+	@Value("${host-s-b}")
+	private String hostSB;
+	
+	@Value("${user-s-b}")
 	private String userSB;
+	
+	@Value("${name-s-b}")
+	private String nameSB;
+	
+	@Value("${pass-s-b}")
+	private String passSB;
+	
+	public String getPassSB() {
+		return passSB;
+	}
+
+	public void setPassSB(String passSB) {
+		this.passSB = passSB;
+	}
+
+	public String getNameSB() {
+		return nameSB;
+	}
+
+	public void setNameSB(String nameSB) {
+		this.nameSB = nameSB;
+	}
+
+	@Value("${surl-s-b}")
 	private String surlSB;
+	
+	@Value("${driv-s-b}")
 	private String drivSB;
 
 	@Override
 	public String toString() {
 		return "Config [host=" + host + ", port=" + port + ", pass=" + pass + ", user=" + user + ", name=" + name
-				+ ", jdni=" + jdni + ", surl=" + surl + ", driv=" + driv + ", portSB=" + portSB + ", userSB=" + userSB
-				+ ", surlSB=" + surlSB + ", drivSB=" + drivSB + "]";
+				+ ", jdni=" + jdni + ", surl=" + surl + ", driv=" + driv + ", portSB=" + portSB + ", hostSB=" + hostSB
+				+ ", userSB=" + userSB + ", surlSB=" + surlSB + ", drivSB=" + drivSB + "]";
+	}
+
+	public String getHost() {
+		return host;
+	}
+
+	public void setHost(String host) {
+		this.host = host;
 	}
 
 	public String getPort() {
@@ -34,6 +90,14 @@ public class Config {
 
 	public void setPort(String port) {
 		this.port = port;
+	}
+
+	public String getPass() {
+		return pass;
+	}
+
+	public void setPass(String pass) {
+		this.pass = pass;
 	}
 
 	public String getUser() {
@@ -84,6 +148,14 @@ public class Config {
 		this.portSB = portSB;
 	}
 
+	public String getHostSB() {
+		return hostSB;
+	}
+
+	public void setHostSB(String hostSB) {
+		this.hostSB = hostSB;
+	}
+
 	public String getUserSB() {
 		return userSB;
 	}
@@ -108,20 +180,6 @@ public class Config {
 		this.drivSB = drivSB;
 	}
 
-	public String getHost() {
-		return host;
-	}
-
-	public void setHost(String host) {
-		this.host = host;
-	}
-
-	public String getPass() {
-		return pass;
-	}
-
-	public void setPass(String pass) {
-		this.pass = pass;
-	}
+	
 
 }
