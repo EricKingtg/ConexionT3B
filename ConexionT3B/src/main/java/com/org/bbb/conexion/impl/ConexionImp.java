@@ -5,10 +5,12 @@ import java.sql.DriverManager;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Component;
 
 import com.org.bbb.conexion.Conexion;
 import com.org.bbb.utils.Config;
 
+@Component("conexion")
 public class ConexionImp implements Conexion {
 
 	@Autowired
@@ -22,16 +24,11 @@ public class ConexionImp implements Conexion {
 			Class.forName(configuracion.getDriv());
 			DriverManager.setLoginTimeout(10);
 			if (driver.equalsIgnoreCase("sybase")) {
-				// conn =
-				// DriverManager.getConnection(dbUrl+dbHost+":"+dbPort+"/"+dbName,dbUser,dbPass);
-				// System.out.println(dbUrl+dbHost+":"+dbPort+"/"+dbName);
 				conn = DriverManager.getConnection(configuracion.getSurlSB() + configuracion.getHostSB() + ":" 
 				+ configuracion.getPortSB() + "/" + configuracion.getNameSB(),configuracion.getUserSB(),configuracion.getPassSB());
 
 			}
 			if (driver.equalsIgnoreCase("mysql")) {
-				// System.out.println(dbUrl +"/"+ dbHost+":"+dbPort+"/"+dbName+"?user="+dbUser+"&password="+dbPass);
-				// conn = DriverManager.getConnection(dbUrl+"/"+ dbHost+":"+dbPort+"/"+dbName,dbUser,dbPass);
 				conn = DriverManager.getConnection(configuracion.getSurl() + "/" + configuracion.getHost() + ":"
 						+ configuracion.getPort() + "/" + configuracion.getName(), configuracion.getUser(),configuracion.getPass());
 			}
