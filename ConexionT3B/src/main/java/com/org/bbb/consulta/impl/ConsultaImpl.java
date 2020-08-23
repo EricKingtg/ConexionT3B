@@ -9,6 +9,7 @@ import java.util.HashMap;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Service;
 
 import com.org.bbb.conexion.Conexion;
 import com.org.bbb.consulta.Consulta;
@@ -16,6 +17,7 @@ import com.org.bbb.dto.CampoDTO;
 import com.org.bbb.dto.ColumnaDTO;
 import com.org.bbb.dto.QryRespDTO;
 
+@Service("consulta")
 public class ConsultaImpl implements Consulta {
 
 	@Autowired
@@ -101,6 +103,9 @@ public class ConsultaImpl implements Consulta {
 
 	@Override
 	public QryRespDTO ejecutaSelectSP(String driver, String sql, ArrayList<Object> params) {
+		
+		System.out.println("Consulta.ejecutaSelectSP");
+		
 		Connection conn = conexion.creaConexion(driver);
 		QryRespDTO resp = new QryRespDTO();
 		CallableStatement st = null;
@@ -150,11 +155,14 @@ public class ConsultaImpl implements Consulta {
 					+ limpiaSQL(sql) + " |" + ex.toString());
 			System.out.println("ModuloBDConexion" + "|" + this.getClass().toString() + "|" + "ejecutaSelectSP: "
 					+ limpiaSQL(sql) + " |" + ex.toString());
+			ex.printStackTrace();
 		} finally {
 			cerrarConexion(conn);
 			cerrarRecursos(st, rs);
 		}
+
 		return resp;
+		
 	}
 
 	@Override

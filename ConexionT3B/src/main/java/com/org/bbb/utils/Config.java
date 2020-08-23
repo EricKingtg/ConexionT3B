@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Component;
 
-@Component("configIp")
+@Component("configuracion")
 @PropertySource(value = "file:ConexionBBB.properties")
 public class Config {
 
