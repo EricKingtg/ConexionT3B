@@ -1,1 +1,9 @@
+com\org\bbb\dto\CampoDTO.class
+com\org\bbb\consulta\impl\ConsultaImpl.class
+com\org\bbb\dto\ColumnaDTO.class
+com\org\bbb\dto\QryRespDTO.class
+com\org\bbb\conexion\Conexion.class
+com\org\bbb\conexion\impl\ConexionImp.class
 com\org\bbb\FrameworkApplication.class
+com\org\bbb\utils\Config.class
+com\org\bbb\consulta\Consulta.class
